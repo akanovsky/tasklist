@@ -1,0 +1,12 @@
+{%extends 'main/base.html' %}
+
+
+
+  <h1>Seznam uživatelů</h1>
+  {% block content%}
+   {% for item in ls%}
+    <div class="list-group">
+    <a href="/{{item.id}}" class="list-group-item list-group-item-action">{{item.name}}</a>
+
+   {% endfor %}
+        {% endblock%}

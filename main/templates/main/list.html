@@ -1,0 +1,56 @@
+{%extends "main/base.html" %}
+{% block title%}Úkolníček{%endblock%}
+
+{%block content%}
+<h3>
+    Úkoly : {{ls.name}}
+</h3>
+<form method="POST" action="#">
+
+{% csrf_token %}
+
+
+    {% for item in ls.item_set.all%}
+
+      <!--  <div class="input-group-prepend"> -->
+
+
+                {%if item.complete == False %}
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input type="checkbox", value="clicked", name="c{{item.id}}">
+                    </div>
+                    <input type="text", value="{{item.text}}" class="form-control">
+                </div>
+                {%endif%}
+    {% endfor %}
+    {% for item in ls.item_set.all%}
+
+
+                {%if item.complete == True %}
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input type="checkbox", value="clicked", name="c{{item.id}}" checked>
+                    </div>
+                    <input type="text", value="{{item.text}}" class="form-control">
+                </div>
+                {%endif%}
+
+
+
+
+    {% endfor %}
+
+
+
+    <div class="input-group mb-3">
+   <!--     <div class="input-group-prepend">-->
+            <button type="submit", name="newItem", value="newItem" class="btn btn-success">Přidat úkol</button>
+        <!--</div>-->
+        <input type="text", name="new">
+
+    </div>
+    <button type="submit", name="save", value="save" class="btn btn-success">Ulož stav</button>
+</form>
+
+{%endblock%}
