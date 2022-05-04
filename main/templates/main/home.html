@@ -1,10 +1,10 @@
-{%extends 'main/base.html' %}
+{%extends 'main/base2.html' %}
 
 
 
-  <h1>Seznam uživatelů</h1>
+  <h1>List of tasklists</h1>
   {% block content%}
-   {% for item in ls%}
+   {% for item in user.todolist.all%}
     <div class="list-group">
     <a href="/{{item.id}}" class="list-group-item list-group-item-action">{{item.name}}</a>
 

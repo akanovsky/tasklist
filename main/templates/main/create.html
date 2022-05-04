@@ -1,8 +1,8 @@
-{%extends "main/base.html" %}
-{% block title%} Create new list{%endblock%}
+{%extends "main/base2.html" %}
+{% block title%}Tasklist{%endblock%}
 
 {%block content%}
-<h3>Create page</h3>
+<h3>Create new tasklist</h3>
 <form method="post" action="/create/"  class="form-group">
     {% csrf_token %}
     <div class="input-group mb-3">

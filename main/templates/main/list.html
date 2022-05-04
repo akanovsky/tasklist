@@ -1,9 +1,9 @@
-{%extends "main/base.html" %}
-{% block title%}Úkolníček{%endblock%}
+{%extends "main/base2.html" %}
+{% block title%}Tasklist{%endblock%}
 
 {%block content%}
 <h3>
-    Úkoly : {{ls.name}}
+    Tasks in {{ls.name}}
 </h3>
 <form method="POST" action="#">
 
@@ -45,12 +45,12 @@
 
     <div class="input-group mb-3">
    <!--     <div class="input-group-prepend">-->
-            <button type="submit", name="newItem", value="newItem" class="btn btn-success">Přidat úkol</button>
+            <button type="submit", name="newItem", value="newItem" class="btn btn-success">Add task</button>
         <!--</div>-->
         <input type="text", name="new">
 
     </div>
-    <button type="submit", name="save", value="save" class="btn btn-success">Ulož stav</button>
+    <button type="submit", name="save", value="save" class="btn btn-success">Save progress</button>
 </form>
 
 {%endblock%}
