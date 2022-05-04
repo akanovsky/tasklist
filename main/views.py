@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item
 from .forms import CreateNewList
 # Create your views here.
+# prace se seznamem tasku, stazeni tasku pro zalogovaného uzivatele, zaznam splneni tasku, zalozeni noveho tasku
 def index(response, id):
     ls = ToDoList.objects.get(id = id)
     if ls in response.user.todolist.all():
@@ -32,7 +33,7 @@ def index(response, id):
 
         return render(response, "main/list.html",{"ls" : ls})
     return render(response, "main/view.html",{})
-
+# uvodni stranka
 def home(response):
     # ls = ToDoList.objects.all()
     # # print(ls)
@@ -40,7 +41,7 @@ def home(response):
     # return render(response, "main/home.html",{"ls":ls})
 
         return render(response, "main/home.html", {})
-
+# zalozeni noveho seznamu tasku
 def create(response):
     if response.method == "POST":
         form = CreateNewList(response.POST)
@@ -55,7 +56,7 @@ def create(response):
         form = CreateNewList()
     return render(response, "main/create.html",{"form":form})
 
-
+# stazeni vsech task listu pro uzivatele
 def view(response):
     ls = ToDoList.objects.all()
     return render(response, "main/view.html", {"ls":ls})
